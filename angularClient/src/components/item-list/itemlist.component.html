@@ -1,0 +1,36 @@
+<div class="vertical">
+  <div class="inline">
+    <label class="w-header">UserName:</label>
+    <input class="w-value" type="text" [(ngModel)]="SelectedUser.Username">
+  </div>
+  
+  <div class="inline">
+    <label class="w-header">Password:</label>
+    <input class="w-value" type="text" [(ngModel)]="SelectedUser.Password">
+  </div>
+  
+  <div class="inline">
+    <label class="w-header">Email:</label>
+    <input class="w-value" type="text" [(ngModel)]="SelectedUser.Email">
+  </div>
+  <input type="button" (click)="UpdateSelected()" value="Update User">
+  <input type="button" (click)="DeleteSelected()" value="Delete User">
+</div>
+
+<input type="button" (click)="GetUsers()" value="Get Users">
+<table class="fixed_headers">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of Users; let i = index" class="pointer-cursor" [class.active]="i == SelectedRow" (click)="OnSelect(user, i)">
+      <td>{{user.Username}}</td>
+      <td>{{user.Password}}</td>
+      <td>{{user.Email}}</td>
+    </tr>
+  </tbody>
+</table>
