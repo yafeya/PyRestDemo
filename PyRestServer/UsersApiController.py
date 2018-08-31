@@ -92,7 +92,7 @@ class UsersApiController(Resource):
             result.Code = 200
 
         j_obj = json.dumps(result.__dict__)
-        return j_obj , result.Code
+        return j_obj, result.Code
 
     def get(self):
         users = self.__user_repository__.get_users()

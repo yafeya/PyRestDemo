@@ -21,7 +21,8 @@ import * as Services from '../services/index';
         HttpClientModule
     ],
     providers: [
-        Services.HttpClient
+        Services.HttpClient,
+        Services.NotificationService
     ],
     bootstrap: [AppComponent]
 })
