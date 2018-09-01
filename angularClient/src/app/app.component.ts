@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  private mShowAnimates: boolean = false;
+
+  get ShowAnimates(): boolean {
+    return this.mShowAnimates;
+  }
+
+  set ShowAnimates(value: boolean) {
+    this.mShowAnimates = value;
+  }
 }

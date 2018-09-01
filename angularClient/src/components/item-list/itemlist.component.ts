@@ -16,7 +16,7 @@ export class ItemListComponent implements OnInit, OnDestroy {
     private mSelectedRow: number;
 
     constructor(
-        private httpClient: Services.HttpClient, 
+        private httpClient: Services.HttpClient,
         private notificationService: Services.NotificationService) {
 
     }
@@ -64,7 +64,7 @@ export class ItemListComponent implements OnInit, OnDestroy {
     }
 
     async UpdateSelected() {
-        let raw = {username: this.mSelectedUser.Username, password: this.mSelectedUser.Password, email: this.mSelectedUser.Email};
+        let raw = { username: this.mSelectedUser.Username, password: this.mSelectedUser.Password, email: this.mSelectedUser.Email };
         await this.httpClient.Post('http://localhost:9981/users', raw);
         this.GetUsers();
     }
