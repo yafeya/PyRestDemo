@@ -27,7 +27,7 @@ gulp.task('electron-start-arg',()=>{
 
 gulp.task('pack-linux', (cb) => {
     let opts = {
-        name: 'InteractiveIo',
+        name: 'demo',
         dir: './',  
         arch: 'x64',
         platform: ['linux'],
@@ -35,15 +35,15 @@ gulp.task('pack-linux', (cb) => {
         out: './' + packagesFolder,
         asar: true,
         ignore: '^/.vscode',
-        appCopyright: "(C) Keysight Technologies 1984-2017",
+        appCopyright: "(C) yafeya",
         appVersion: "18.0.0.0",
         icon: "src/assets/images/App.ico",
         win32metadata: {
-            CompanyName: "Keysight Technologies",
-            FileDescription: "Interactive Io",
-            OriginalFilename: "InteractiveIo.exe",
-            ProductName: "Keysight IO Libraries",
-            LegalCopyright: "(C) Keysight Technologies 1984-2017"
+            CompanyName: "yafeya",
+            FileDescription: "demo",
+            OriginalFilename: "demo",
+            ProductName: "demo",
+            LegalCopyright: "(C) yafeya"
         }
     }
     return packager(opts, (err, appPath) => {
@@ -55,7 +55,7 @@ gulp.task('pack-linux', (cb) => {
 
 gulp.task('pack-win', (cb) => {
     let opts = {
-        name: 'InteractiveIo',
+        name: 'demo',
         dir: './',  
         arch: 'x64',
         platform: ['win32'],
@@ -63,15 +63,15 @@ gulp.task('pack-win', (cb) => {
         out: './' + packagesFolder,
         asar: true,
         ignore: '^/.vscode',
-        appCopyright: "(C) Keysight Technologies 1984-2017",
+        appCopyright: "(C) yafeya",
         appVersion: "18.0.0.0",
         icon: "src/assets/images/App.ico",
         win32metadata: {
-            CompanyName: "Keysight Technologies",
-            FileDescription: "Interactive Io",
-            OriginalFilename: "InteractiveIo.exe",
-            ProductName: "Keysight IO Libraries",
-            LegalCopyright: "(C) Keysight Technologies 1984-2017"
+            CompanyName: "yafeya",
+            FileDescription: "demo",
+            OriginalFilename: "demo.exe",
+            ProductName: "demo",
+            LegalCopyright: "(C) yafeya"
         }
     }
     return packager(opts, (err, appPath) => {
