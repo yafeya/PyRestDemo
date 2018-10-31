@@ -1,0 +1,100 @@
+<html>
+
+<head>
+    <title>The jQuery Example</title>
+
+    <style>
+        .block-line > div {
+            position: relative;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .left-gap {
+            position: absolute;
+            left: 80px;
+        }
+    </style>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+    </script>
+
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function () {
+            $("#driver").click(function (event) {
+
+                $.get('http://localhost:9981/users', function (users) {
+                    $('#stage').html('<div></div>');
+                    $.each(users, function (index, value) {
+                        let user = $.parseJSON(value);
+
+                        let start = '<div>';
+                        let content = start.concat(`<p> Username: ${user.username} '</p>`)
+                            .concat(`<p> Password: ${user.password} '</p>`)
+                            .concat(`<p> Email: ${user.email} '</p>`)
+                            .concat('</div>');
+                        console.log(content);
+                        $('#stage').append(content);
+                    });
+                });
+
+            });
+
+            $("#submit_button").click(function (event) {
+                let username = $('#txt_name').val();
+                let password = $('#txt_password').val();
+                let email = $('#txt_email').val();
+                console.log(`name: ${username}, password: ${password}, email: ${email}`);
+                if (username !== '') {
+                    let user = new Object();
+                    user.username = username;
+                    user.password = password;
+                    user.email = email;
+                    $.ajax({
+                        url: 'http://localhost:9981/users',
+                        type: 'PUT',
+                        data: JSON.stringify(user),
+                        dataType: 'json',
+                        success: function (result) {
+                            alert('Add user successfully.');
+                        }
+                    });
+                }
+                else {
+                    alert('Username cannot be empty!!!');
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <p>Click on the button to load result.json file −</p>
+
+    <div id="stage" style="background-color:#eee;">
+        STAGE
+    </div>
+
+    <input type="button" id="driver" value="Load Data" />
+
+    <div class="block-line">
+        <div>
+            <label>username: </label>
+            <input type="text" id="txt_name" class="left-gap" value="" />
+        </div>
+        <div>
+            <label>password: </label>
+            <input type="text" id="txt_password" class="left-gap" value="" />
+        </div>
+        <div>
+            <label>email: </label>
+            <input type="text" id="txt_email" class="left-gap" value="" />
+        </div>
+
+        <div>
+            <input type="button" id="submit_button" value="Add User" />
+        </div>
+    </div>
+</body>
+
+</html>

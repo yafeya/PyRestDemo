@@ -31,7 +31,7 @@ def start_restful_server():
 
 
 def start_socket_server():
-    socketio.run(app, 'localhost', 9981)
+    socketio.run(app, '0.0.0.0', 9981)
 
 
 def initialize_notifier():
